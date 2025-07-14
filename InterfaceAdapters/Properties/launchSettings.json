@@ -1,0 +1,25 @@
+{
+  "profiles": {
+    "Instance1": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Instance1"
+      },
+      "applicationUrl": "http://localhost:5021"
+    },
+    "Instance2": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Instance2"
+      },
+      "applicationUrl": "http://localhost:5022"
+    },
+    "Instance3": {
+      "commandName": "Project",
+      "environmentVariables": {
+        "ASPNETCORE_ENVIRONMENT": "Instance3"
+      },
+      "applicationUrl": "http://localhost:5023"
+    }
+  }
+}
