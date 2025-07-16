@@ -1,4 +1,4 @@
-/* using Infrastructure;
+using Infrastructure;
 using Microsoft.AspNetCore.Hosting;
 using Microsoft.AspNetCore.Mvc.Testing;
 using Microsoft.EntityFrameworkCore;
@@ -51,4 +51,3 @@ public class IntegrationTestsWebApplicationFactory<TProgram> : WebApplicationFac
         await _postgres.StopAsync();
     }
 }
- */

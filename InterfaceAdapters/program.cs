@@ -55,6 +55,8 @@ builder.Services.AddAutoMapper(cfg =>
     cfg.CreateMap<Technology, TechnologyDTO>();
 });
 // MassTransit
+var instance = InstanceInfo.InstanceId;
+
 builder.Services.AddMassTransit(x =>
 {
     x.AddConsumer<TechnologyCreatedConsumer>();
@@ -62,7 +64,6 @@ builder.Services.AddMassTransit(x =>
     x.UsingRabbitMq((context, cfg) =>
    {
        cfg.Host("rabbitmq://localhost");
-       var instance = InstanceInfo.InstanceId;
        cfg.ReceiveEndpoint($"technologyMicroService-cmd-{instance}", e =>
        {
            e.ConfigureConsumer<TechnologyCreatedConsumer>(context);

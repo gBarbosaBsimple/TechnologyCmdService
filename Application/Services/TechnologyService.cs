@@ -20,14 +20,12 @@ namespace Application.Services
         private ITechnologyRepositoryEF _technologyRepository;
         private readonly IMessagePublisher _publisher;
         private readonly IMapper _mapper;
-        //priate readonly IMessagePublisher _publisher;
-
         public TechnologyService(ITechnologyFactory technologyFactory, ITechnologyRepositoryEF technologyRepository, IMapper mapper, IMessagePublisher publisher)
         {
             _technologyFactory = technologyFactory;
             _technologyRepository = technologyRepository;
             _mapper = mapper;
-            //this._publisher = publisher;
+            this._publisher = publisher;
         }
         public async Task<Result<TechnologyDTO>> AddTechnologyAsync(AddTechnologyDTO technologyDTO)
         {
@@ -35,7 +33,7 @@ namespace Application.Services
             try
             {
                 t = _technologyFactory.CreateAsync(technologyDTO.Description).Result;
-                await _technologyRepository.AddAsync(t);
+                var techAdded = await _technologyRepository.AddAsync(t);
                 await _publisher.PublishTechnologyCreatedAsync(t.Id, t.Description);
 
             }
